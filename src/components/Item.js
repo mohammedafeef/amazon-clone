@@ -12,6 +12,19 @@ const Item = ({id,tittle,price,rating,image,quantity}) =>{
             quantity:count
         })
     }
+    const dltItem =async () =>{
+        let item = await db.collection('cartProducts').doc(id);
+        // use get to find an doc in an collection 
+        // let product = await item.get()
+        // console.log(product)
+        quantity >1 ?(
+            item.update({
+                quantity:quantity - 1
+            })
+        ):(
+            item.delete()
+        )
+    }
     return(
         <Container>
             <Image>
@@ -27,7 +40,7 @@ const Item = ({id,tittle,price,rating,image,quantity}) =>{
                             {options}
                         </select>
                     </Quandity>
-                    <DltButton>
+                    <DltButton onClick = {dltItem}>
                         Delete
                     </DltButton>
                 </ActionQuandity>

@@ -4,7 +4,7 @@ import LocationOnIcon from '@material-ui/icons/LocationOn';
 import SearchIcon from '@material-ui/icons/Search';
 import {Link} from "react-router-dom";
 
-const Header = ({cartProducts}) =>{
+const Header = ({cartProducts,userName,signOut}) =>{
     let Count = 0;
     cartProducts.forEach((elem) => {
         Count += elem.product.quantity;
@@ -30,8 +30,8 @@ const Header = ({cartProducts}) =>{
                 </HeaderSearchIcon>
             </HeaderSearch>
             <HeaderOption>
-                <ProfileOption>
-                    <OptionLineOne>Hello,Afeef</OptionLineOne>
+                <ProfileOption onClick={signOut}>
+                    <OptionLineOne>Hello,{userName}</OptionLineOne>
                     <OptionLineTwo>Accounts&lists</OptionLineTwo>
                 </ProfileOption>
                 <OrderOption>
